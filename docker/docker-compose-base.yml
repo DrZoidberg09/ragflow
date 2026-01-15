@@ -29,8 +29,6 @@ services:
       interval: 10s
       timeout: 10s
       retries: 120
-    networks:
-      - ragflow
     restart: unless-stopped
 
   opensearch01:
@@ -65,8 +63,6 @@ services:
       interval: 10s
       timeout: 10s
       retries: 120
-    networks:
-      - ragflow
     restart: unless-stopped
 
   infinity:
@@ -117,8 +113,6 @@ services:
       retries: 30
       start_period: 30s
       timeout: 10s
-    networks:
-      - ragflow
     restart: unless-stopped
 
   sandbox-executor-manager:
@@ -168,8 +162,6 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
       - ./init.sql:/data/application/init.sql
-    networks:
-      - ragflow
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-uroot", "-p${MYSQL_PASSWORD}"]
       interval: 10s
@@ -189,8 +181,6 @@ services:
       - MINIO_ROOT_PASSWORD=${MINIO_PASSWORD}
     volumes:
       - minio_data:/data
-    networks:
-      - ragflow
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
@@ -207,8 +197,6 @@ services:
       - ${REDIS_PORT}:6379
     volumes:
       - redis_data:/data
-    networks:
-      - ragflow
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
@@ -225,8 +213,6 @@ services:
     ports:
       - ${TEI_PORT-6380}:80
     env_file: .env
-    networks:
-      - ragflow
     command: ["--model-id", "/data/${TEI_MODEL}", "--auto-truncate"]
     restart: unless-stopped
 
@@ -239,8 +225,6 @@ services:
     ports:
       - ${TEI_PORT-6380}:80
     env_file: .env
-    networks:
-      - ragflow
     command: ["--model-id", "/data/${TEI_MODEL}", "--auto-truncate"]
     deploy:
       resources:
@@ -269,31 +253,4 @@ services:
       interval: 10s
       timeout: 10s
       retries: 120
-    networks:
-      - ragflow
     restart: unless-stopped
-
-
-volumes:
-  esdata01:
-    driver: local
-  osdata01:
-    driver: local
-  infinity_data:
-    driver: local
-  ob_data:
-    driver: local
-  mysql_data:
-    driver: local
-  minio_data:
-    driver: local
-  redis_data:
-    driver: local
-  tei_data:
-    driver: local
-  kibana_data:
-    driver: local
-
-networks:
-  ragflow:
-    driver: bridge
