@@ -260,6 +260,7 @@ services:
       - ${MYSQL_PORT}:3306
     volumes:
       - mysql_data:/var/lib/mysql
+      - mysql_conf:/etc/my.cnf.d
       - ./init.sql:/data/application/init.sql
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-uroot", "-p${MYSQL_PASSWORD}"]
