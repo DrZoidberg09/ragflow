@@ -261,6 +261,7 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
       - mysql_conf:/etc/my.cnf.d
+      - ./my.cnf:/etc/my.cnf
       - ./init.sql:/data/application/init.sql
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-uroot", "-p${MYSQL_PASSWORD}"]
