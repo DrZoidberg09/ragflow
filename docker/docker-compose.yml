@@ -123,6 +123,9 @@ services:
       memlock:
         soft: -1
         hard: -1
+      nofile:
+        soft: 500000
+        hard: 500000
     healthcheck:
       test: ["CMD-SHELL", "curl http://localhost:9200"]
       interval: 10s
