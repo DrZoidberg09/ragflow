@@ -307,7 +307,10 @@ services:
       interval: 10s
       timeout: 10s
       retries: 120
-
+    ulimits:
+      nofile:
+        soft: 500000
+        hard: 500000
 
   tei-cpu:
     profiles:
