@@ -322,7 +322,10 @@ services:
     env_file: .env
     command: ["--model-id", "/data/${TEI_MODEL}", "--auto-truncate"]
     restart: unless-stopped
-
+    ulimits:
+      nofile:
+        soft: 500000
+        hard: 500000
 
   tei-gpu:
     profiles:
