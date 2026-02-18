@@ -323,6 +323,9 @@ services:
     command: ["--model-id", "/data/${TEI_MODEL}", "--auto-truncate"]
     restart: unless-stopped
     ulimits:
+      memlock:
+        soft: -1
+        hard: -1
       nofile:
         soft: 500000
         hard: 500000
