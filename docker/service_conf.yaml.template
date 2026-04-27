@@ -106,13 +106,13 @@ user_default_llm:
 #     image2text_model: ''
 oauth:
   oauth2:
-    display_name: "sso.schlegeundpartner.de"
-    client_id: "nh0Om2qyLG6MQYM8tNq0CbPfeu8XbJhZaEsnqxPi"
-    client_secret: "o36zz82eTdi5H0azFbPDeKk0bzTtVV0LTHZJmZbbLkAncTFQDANqrEWVgkpU4tytR9Qcp5JNexLnvzrqYMxUZKVjRdSzFwz0YuDy9sCZIdsmQcNusTlFVzoBP9Y2oNwS"
-    authorization_url: "https://sso.schlegelundpartner.de/application/o/authorize/"
-    token_url: "https://sso.schlegelundpartner.de/application/o/token/"
-    userinfo_url: "https://sso.schlegelundpartner.de/application/o/userinfo/"
-    redirect_uri: "https://ragflow.schlegelundpartner.de/v1/user/oauth/callback/oauth2"
+    display_name: ""
+    client_id: ""
+    client_secret: ""
+    authorization_url: ""
+    token_url: ""
+    userinfo_url: ""
+    redirect_uri: ""
 #   oidc:
 #     display_name: "OIDC"
 #     client_id: "your_client_id"
